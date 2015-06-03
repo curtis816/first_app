@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.save
     
-    redirect_to groups_path
+    redirect_to groups_path, notice: "新增討論版成功"
    
   end
 
@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
 
     if @group.update(group_params)
-      redirect_to groups_path(@group)
+      redirect_to groups_path(@group), notice: "修改討論版成功"
     else
       render :edit
     end
@@ -39,8 +39,8 @@ class GroupsController < ApplicationController
 
     @group.destroy
 
-    redirect_to groups_path
-    
+    redirect_to groups_path, alert: "討論版已刪除"
+
   end
 
   private
